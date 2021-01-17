@@ -1,0 +1,89 @@
+
+entity User {
+	interest String
+}
+
+entity Product {
+	categoryId Long
+    authorId Long
+    companyId Long
+    brandId Long
+}
+
+entity Cart {
+	status Integer
+}
+
+entity CartProduct
+
+entity Order
+
+entity OrderProduct
+
+entity BillingAddress {
+	phoneNumber String
+    alternativePhoneNumber String
+}
+
+entity ShippingAddress {
+	phoneNumber String
+    alternativePhoneNumber String
+}
+
+entity ProductList
+
+entity ProductListProduct
+
+entity Wishlist
+
+relationship ManyToOne {
+	Cart{user} to User
+}
+
+relationship ManyToOne {
+	Order{user} to User
+}
+
+relationship ManyToOne {
+	ProductList{user} to User
+}
+
+relationship ManyToOne {
+	Wishlist{user} to User
+}
+
+relationship ManyToOne {
+	CartProduct{cart} to Cart
+}
+
+relationship ManyToOne {
+	CartProduct{product} to Product
+}
+
+relationship ManyToOne {
+	OrderProduct{order} to Order
+}
+
+relationship ManyToOne {
+	OrderProduct{product} to Product
+}
+
+relationship OneToOne {
+	Order{shippingAddress} to ShippingAddress
+}
+
+relationship OneToOne {
+	Order{billingAddress} to BillingAddress
+}
+
+relationship ManyToOne {
+	ProductListProduct{productList} to ProductList
+}
+
+relationship ManyToOne {
+	ProductListProduct{product} to Product
+}
+
+relationship ManyToOne {
+	Wishlist{product} to Product
+}
